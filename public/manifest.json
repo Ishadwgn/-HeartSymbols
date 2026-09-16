@@ -1,0 +1,19 @@
+{
+  "name": "Heart Symbols Suite - 1-Click Copy & Generator",
+  "short_name": "Heart Symbols",
+  "description": "Copy & paste 150+ heart symbols, explore emoji meanings, alt codes, and aesthetic bio generator.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf7f0",
+  "theme_color": "#a3082c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity", "social"],
+  "lang": "en"
+}

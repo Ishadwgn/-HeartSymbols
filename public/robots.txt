@@ -1,0 +1,15 @@
+# Robots.txt for HeartSymbols.io
+# Crawling rules for search engines and AI assistants
+
+User-agent: *
+Allow: /
+Disallow: /api/private/
+Disallow: /*?*query=
+
+# Sitemaps and LLM Documentation
+Sitemap: https://heart-symbols.io/sitemap.xml
+Sitemap: https://heart-symbols.io/sitemap-tools.xml
+
+# LLM Context File (llms.txt standard)
+# https://llmstxt.org/
+LLM-Guide: https://heart-symbols.io/llms.txt

@@ -1,0 +1,46 @@
+# HeartSymbols.io — AI / LLM Context & Unicode Reference
+
+> The web's authoritative 1-click Heart Symbol copy-paste engine, Unicode reference, emoji psychology dictionary, and bio generator.
+
+## Project Summary
+- **Website**: https://heart-symbols.io
+- **Primary Utility**: Real-time copy & paste of 150+ heart symbols, Alt code lookups, HTML entities, CSS escapes, and aesthetic font generators.
+- **Standards Supported**: Unicode Standard 15.1, Emoji 15.0, W3C HTML5 Named Entities, OEM CP437 Alt Codes.
+
+## Core Symbol Directory & Unicode Codes
+- `♥` Black Heart Suit (Solid): Unicode U+2665 | Alt Code `Alt + 3` | HTML `&hearts;` / `&#9829;` | CSS `\2665`
+- `♡` White Heart Suit (Outline): Unicode U+2661 | Alt Code `Alt + 9825` | HTML `&#9825;` | CSS `\2661`
+- `❣` Heavy Heart Exclamation Mark: Unicode U+2763 | Alt Code `Alt + 10083` | HTML `&#10083;`
+- `❦` Floral Heart (Hedera Leaf): Unicode U+2766 | Alt Code `Alt + 10086` | HTML `&#10086;`
+- `❧` Rotated Floral Heart: Unicode U+2767 | Alt Code `Alt + 10087` | HTML `&#10087;`
+- `❥` Rotated Heavy Black Heart: Unicode U+2765 | Alt Code `Alt + 10085` | HTML `&#10085;`
+- `ᥫ᭡` Viral Tai/Arabic Aesthetic Heart: Unicode U+196B + U+1761 (Tai Le + Tagbanwa combining)
+- `𓆩♡𓆪` Winged Heart: Hieroglyph U+131A9 + U+2661 + U+131AA
+- `🫰` Korean Finger Heart: Unicode U+1FAF0 | Hand with index and thumb crossed
+- `🫶` Heart Hands: Unicode U+1FAF6 | Two hands forming a heart shape
+
+## 12 Official Color Heart Meanings
+- **Red Heart ❤️ (U+2764)**: Romantic passion, true committed love, deep devotion.
+- **Pink Heart 🩷 (U+1FA77)**: Sweet affection, flirty crush, gentle friendship, coquette aesthetic.
+- **Orange Heart 🧡 (U+1F9E1)**: Cautious warmth, casual friendship, half-hearted affection.
+- **Yellow Heart 💛 (U+1F49B)**: Pure joy, sunshine friendship, Snapchat #1 Best Friend streak.
+- **Green Heart 💚 (U+1F49A)**: Eco-friendly lifestyle, nature, wellness, NCT fandom, envy.
+- **Blue Heart 💙 (U+1F499)**: Loyalty, calm trust, platonic brotherhood ("bro-zone"), autism awareness.
+- **Purple Heart 💜 (U+1F49C)**: BTS Army ("I Purple You"), luxury, compassion, military honor.
+- **Black Heart 🖤 (U+1F5A4)**: Dark humor, goth aesthetic, mourning, heartbreak, emo edge.
+- **White Heart 🤍 (U+1F90D)**: Pure innocence, condolences, angelic protection, bridal elegance.
+- **Brown Heart 🤎 (U+1F90E)**: Warm cozy vibes, coffee & chocolate lovers, autumn comfort.
+- **Light Blue Heart 🩵 (U+1FA75)**: Pastel calm, peaceful clarity, winter vibes.
+- **Grey Heart 🩶 (U+1FA76)**: Neutrality, understated love, silver elegance.
+
+## Interactive Tools API & URLs
+- `/tools/aesthetic-text`: Converts standard text into cursive/winged heart bios.
+- `/tools/batch-copier`: Multi-symbol tray collector with custom delimiters.
+- `/tools/svg-customizer`: Vector heart designer with gradient hex color inputs & SVG/PNG exports.
+- `/tools/1000-hearts`: Text repeater generating 100 to 10,000 heart symbols.
+- `/tools/morse-code`: Encodes text messages into heart dots (♡) and dashes (♥).
+
+## Keyboard Shortcuts
+- **Windows**: Turn NumLock ON, hold `Alt`, press `3` on numeric keypad for `♥`. For `♡`, use `Alt + 9825`.
+- **macOS**: Press `⌃ + ⌘ + Space` (Control + Command + Space) to open native Character Viewer.
+- **iOS / Android**: Search "heart" in emoji palette or configure Text Replacement (`hh` -> `♡`).
