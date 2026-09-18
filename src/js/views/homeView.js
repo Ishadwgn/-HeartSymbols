@@ -7,19 +7,34 @@ export function renderHomeView(container) {
   let searchQuery = '';
   let currentFontSize = 2.5; // rem
 
+  const QUICK_HEARTS = ['♥', '♡', '❥', '❦', 'ᥫ᭡', '𓆩♡𓆪', '❤️', '🩷', '🖤', '🤍', '🫰', '🫶', '😍', '💖', '✨', '🎀', '𝜗𝜚', '💌'];
+
   container.innerHTML = `
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="container">
-        <div class="hero-badge">
-          <span>❤️ Official Heart Symbol Reference & Tools Hub</span>
+        <!-- Trust & Feature Badges -->
+        <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+          <span class="badge badge-glow" style="padding: 0.35rem 0.9rem; font-size: 0.82rem;">⚡ 150+ Verified Unicode Glyphs</span>
+          <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald, #10b981); border: 1px solid rgba(16, 185, 129, 0.3); font-size: 0.82rem; padding: 0.35rem 0.9rem;">✓ 100% Free & Client-Side</span>
         </div>
-        <h1 class="hero-title">
-          Heart Symbols (<span class="text-gradient">♥ ♡ ❥ ❦ ❤️ 🫰</span>) Copy and Paste
+
+        <h1 class="hero-title title-hero">
+          Copy & Paste <span class="text-gradient">Heart Symbols</span>
         </h1>
-        <p class="hero-subtitle">
-          Instant 1-click copy & paste 150+ heart symbols: aesthetic hearts (ᥫ᭡, 𓆩♡𓆪), color emojis (❤️, 🩷), Korean finger hearts (🫰), Alt codes, HTML entities, CSS escapes, and interactive tools.
+        <p class="hero-subtitle subtitle">
+          Click any heart below to instantly copy it to your clipboard. Explore aesthetic hearts (ᥫ᭡, 𓆩♡𓆪), color emojis (❤️, 🩷), Korean finger hearts (🫰), Alt codes, HTML entities, and interactive tools.
         </p>
+
+        <!-- Fast-Picks Instant Strip (Arrow-Site UX) -->
+        <div class="glass-panel fast-picks-panel" style="max-width: 820px; margin: 0 auto 1.75rem; padding: 1rem 1.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); margin-right: 0.35rem;">Quick Copy:</span>
+          ${QUICK_HEARTS.map(char => `
+            <button type="button" class="btn btn-secondary btn-sm quick-pick-btn" data-char="${char}" title="Click to copy ${char}" aria-label="Copy heart ${char}" style="font-size: 1.25rem; min-width: 42px; height: 42px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); cursor: pointer;">
+              ${char}
+            </button>
+          `).join('')}
+        </div>
 
         <!-- Live Search Bar -->
         <div class="search-container">
@@ -29,17 +44,18 @@ export function renderHomeView(container) {
               type="text" 
               id="home-search-input" 
               class="main-search-input" 
-              placeholder="Search hearts (e.g. 'pink', 'alt 3', 'wings', 'korean', 'fire')..."
+              placeholder="Search hearts by name, style, alt code, or emoji (e.g. 'pink', 'alt 3', 'wings', 'korean')..."
               autocomplete="off"
+              aria-label="Search all heart symbols"
             />
-            <button id="search-clear-btn" class="search-clear-btn" style="display: none;">&times;</button>
+            <button id="search-clear-btn" class="search-clear-btn" style="display: none;" aria-label="Clear search">&times;</button>
           </div>
         </div>
 
-        <!-- Category Filter Pills -->
-        <div class="category-pills-row" id="category-pills-container" style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <!-- Category Filter Pills Bar -->
+        <div class="category-pills-row category-pills-bar" id="category-pills-container">
           ${CATEGORIES.map(cat => `
-            <button class="pill-btn ${cat.id === activeCategory ? 'active' : ''}" data-cat="${cat.id}">
+            <button class="pill-btn home-filter-tab ${cat.id === activeCategory ? 'active' : ''}" data-cat="${cat.id}">
               <span>${cat.name}</span>
             </button>
           `).join('')}
@@ -311,17 +327,28 @@ export function renderHomeView(container) {
     }
 
     grid.innerHTML = filtered.map(item => `
-      <div class="symbol-card" data-char="${item.char}" title="Click to Copy ${item.name}">
-        <button class="symbol-info-trigger" data-info="${item.char}" title="Inspect Details & Specs">ℹ️</button>
-        <span class="symbol-action-badge">Copy</span>
-        <div class="symbol-glyph" style="font-size: ${currentFontSize}rem;">${item.char}</div>
-        <div class="symbol-name">${item.name}</div>
+      <div class="symbol-card card-sheen" data-char="${item.char}" role="button" tabindex="0" aria-label="Copy ${item.name} ${item.char}">
+        <div class="card-header-bar">
+          <span class="card-code-badge">${item.unicode || ''}</span>
+          <div class="card-action-triggers">
+            <button type="button" class="card-action-icon symbol-tray-trigger" data-char="${item.char}" title="Add to Batch Tray" aria-label="Add to batch tray">＋</button>
+            <button type="button" class="card-action-icon symbol-info-trigger" data-info="${item.char}" title="Inspect Details & Codes" aria-label="Inspect ${item.name}">ℹ️</button>
+          </div>
+        </div>
+        <div class="card-glyph-container">
+          <div class="char" style="font-size: ${currentFontSize}rem;">${item.char}</div>
+        </div>
+        <div class="name" title="${item.name}">${item.name}</div>
+        <button type="button" class="card-copy-btn" data-char="${item.char}" aria-label="Copy ${item.char}">
+          <span class="copy-btn-label">Copy</span>
+        </button>
       </div>
     `).join('');
 
     // Attach click listeners to cards
     grid.querySelectorAll('.symbol-card').forEach(card => {
       card.addEventListener('click', (e) => {
+        // If clicking info icon
         if (e.target.closest('.symbol-info-trigger')) {
           e.stopPropagation();
           const char = card.getAttribute('data-char');
@@ -330,11 +357,43 @@ export function renderHomeView(container) {
           return;
         }
 
+        // If clicking tray icon
+        if (e.target.closest('.symbol-tray-trigger')) {
+          e.stopPropagation();
+          const char = card.getAttribute('data-char');
+          copyEngine.addToTray(char);
+          copyEngine.showToast('💖', `Added ${char} to tray`);
+          return;
+        }
+
         const char = card.getAttribute('data-char');
+        const copyBtn = card.querySelector('.card-copy-btn');
+        const copyLabel = card.querySelector('.copy-btn-label');
+
+        card.classList.add('copied');
+        if (copyBtn) copyBtn.classList.add('copied');
+        if (copyLabel) copyLabel.textContent = 'Copied ✓';
+
+        setTimeout(() => {
+          card.classList.remove('copied');
+          if (copyBtn) copyBtn.classList.remove('copied');
+          if (copyLabel) copyLabel.textContent = 'Copy';
+        }, 1400);
+
         copyEngine.copy(char, `Copied "${char}"!`, true);
       });
     });
   }
+
+  // Quick Pick Buttons listener
+  container.querySelectorAll('.quick-pick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const char = btn.getAttribute('data-char');
+      btn.style.transform = 'scale(0.9)';
+      setTimeout(() => { btn.style.transform = ''; }, 150);
+      copyEngine.copy(char, `Copied "${char}"!`, true);
+    });
+  });
 
   // Search input listeners
   searchInput.addEventListener('input', (e) => {
@@ -353,7 +412,7 @@ export function renderHomeView(container) {
   // Size slider listener
   sizeSlider.addEventListener('input', (e) => {
     currentFontSize = parseFloat(e.target.value);
-    grid.querySelectorAll('.symbol-glyph').forEach(glyph => {
+    grid.querySelectorAll('.char').forEach(glyph => {
       glyph.style.fontSize = `${currentFontSize}rem`;
     });
   });
@@ -370,6 +429,7 @@ export function renderHomeView(container) {
       renderGrid();
     });
   }
+
 
   // FAQ Accordion listener
   const faqContainer = document.getElementById('faq-container');

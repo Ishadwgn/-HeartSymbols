@@ -56,11 +56,21 @@ export function renderSymbolsView(container, category = null) {
       <!-- Symbols Grid -->
       <div class="symbol-grid" id="directory-symbols-grid">
         ${filtered.map(item => `
-          <div class="symbol-card" data-char="${item.char}" title="Click to Copy ${item.name}">
-            <button class="symbol-info-trigger" data-info="${item.char}" title="Inspect Details & Specs">ℹ️</button>
-            <span class="symbol-action-badge">Copy</span>
-            <div class="symbol-glyph">${item.char}</div>
-            <div class="symbol-name">${item.name}</div>
+          <div class="symbol-card card-sheen" data-char="${item.char}" role="button" tabindex="0" aria-label="Copy ${item.name} ${item.char}">
+            <div class="card-header-bar">
+              <span class="card-code-badge">${item.unicode || ''}</span>
+              <div class="card-action-triggers">
+                <button type="button" class="card-action-icon symbol-tray-trigger" data-char="${item.char}" title="Add to Batch Tray" aria-label="Add to batch tray">＋</button>
+                <button type="button" class="card-action-icon symbol-info-trigger" data-info="${item.char}" title="Inspect Details & Codes" aria-label="Inspect ${item.name}">ℹ️</button>
+              </div>
+            </div>
+            <div class="card-glyph-container">
+              <div class="char">${item.char}</div>
+            </div>
+            <div class="name" title="${item.name}">${item.name}</div>
+            <button type="button" class="card-copy-btn" data-char="${item.char}" aria-label="Copy ${item.char}">
+              <span class="copy-btn-label">Copy</span>
+            </button>
           </div>
         `).join('')}
       </div>
@@ -70,6 +80,7 @@ export function renderSymbolsView(container, category = null) {
   const grid = document.getElementById('directory-symbols-grid');
   grid.querySelectorAll('.symbol-card').forEach(card => {
     card.addEventListener('click', (e) => {
+      // If clicking info icon
       if (e.target.closest('.symbol-info-trigger')) {
         e.stopPropagation();
         const char = card.getAttribute('data-char');
@@ -77,8 +88,33 @@ export function renderSymbolsView(container, category = null) {
         if (found) openSymbolModal(found);
         return;
       }
+
+      // If clicking tray icon
+      if (e.target.closest('.symbol-tray-trigger')) {
+        e.stopPropagation();
+        const char = card.getAttribute('data-char');
+        copyEngine.addToTray(char);
+        copyEngine.showToast('💖', `Added ${char} to tray`);
+        return;
+      }
+
       const char = card.getAttribute('data-char');
+      const copyBtn = card.querySelector('.card-copy-btn');
+      const copyLabel = card.querySelector('.copy-btn-label');
+
+      card.classList.add('copied');
+      if (copyBtn) copyBtn.classList.add('copied');
+      if (copyLabel) copyLabel.textContent = 'Copied ✓';
+
+      setTimeout(() => {
+        card.classList.remove('copied');
+        if (copyBtn) copyBtn.classList.remove('copied');
+        if (copyLabel) copyLabel.textContent = 'Copy';
+      }, 1400);
+
       copyEngine.copy(char, `Copied "${char}"!`, true);
     });
   });
 }
+
+

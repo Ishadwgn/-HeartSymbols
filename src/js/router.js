@@ -19,11 +19,16 @@ export function handleRoute() {
   const mainSection = segments[0] || '';
   const subSection = segments[1] || null;
 
+  // Automatically close mobile nav drawer if open
+  if (typeof window.closeMobileNav === 'function') {
+    window.closeMobileNav();
+  }
+
   // Scroll to top on navigation
   window.scrollTo({ top: 0, behavior: 'instant' });
 
-  // Update active state in nav
-  updateNavActiveState(rawHash);
+  // Update active state in desktop and mobile nav
+  updateNavActiveState(rawHash, mainSection);
 
   switch (mainSection) {
     case '':
@@ -88,7 +93,8 @@ export function handleRoute() {
   }
 }
 
-function updateNavActiveState(hash) {
+function updateNavActiveState(hash, mainSection) {
+  // Desktop Nav Links
   document.querySelectorAll('.nav-link').forEach(link => {
     const href = link.getAttribute('href');
     if (href === hash || (hash !== '#/' && href !== '#/' && hash.startsWith(href))) {
@@ -97,4 +103,16 @@ function updateNavActiveState(hash) {
       link.classList.remove('active');
     }
   });
+
+  // Mobile Bottom Nav Links
+  document.querySelectorAll('.bottom-nav-item').forEach(item => {
+    const dataPath = item.getAttribute('data-path');
+    if (dataPath === undefined || dataPath === null) return;
+    if (dataPath === mainSection || (mainSection === '' && dataPath === '')) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
 }
+
