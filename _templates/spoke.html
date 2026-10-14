@@ -1,0 +1,272 @@
+<!--
+  REUSABLE SPOKE TEMPLATE FOR TOPICAL CLUSTER PAGES
+  ================================================
+  Instructions for creating a new spoke page:
+  1. Copy this file to /{keyword-slug}/index.html
+  2. REMOVE the <meta name="robots" content="noindex,nofollow"> line below!
+  3. Replace all {{...}} tokens with specific spoke content.
+  4. Ensure visible FAQ items match the JSON-LD FAQPage entity 1:1.
+  5. Add link to this spoke inside the appropriate cluster on /index.html and unhide #explore.
+  6. Add new URL to /sitemap.xml.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#a3082c">
+
+  <title>{{Spoke Keyword}} ♡ — Copy and Paste | Heart Symbols</title>
+  <meta name="description" content="{{Spoke 1-2 sentence meta description answering query and inviting one-tap copy.}}">
+  <link rel="canonical" href="https://heartsymbols.netlify.app/{{keyword-slug}}/">
+
+  <!-- IMPORTANT: Remove this noindex tag when deploying a real spoke page -->
+  <meta name="robots" content="noindex,nofollow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{Spoke Keyword}} ♡ — Copy and Paste | Heart Symbols">
+  <meta property="og:description" content="{{Spoke 1-2 sentence meta description answering query and inviting one-tap copy.}}">
+  <meta property="og:url" content="https://heartsymbols.netlify.app/{{keyword-slug}}/">
+  <meta property="og:image" content="https://heartsymbols.netlify.app/assets/og-image.png">
+  <meta property="og:site_name" content="Heart Symbols">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{Spoke Keyword}} ♡ — Copy and Paste | Heart Symbols">
+  <meta name="twitter:description" content="{{Spoke 1-2 sentence meta description answering query and inviting one-tap copy.}}">
+  <meta name="twitter:image" content="https://heartsymbols.netlify.app/assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <!-- JSON-LD Breadcrumbs and FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://heartsymbols.netlify.app/{{keyword-slug}}/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://heartsymbols.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{Spoke title}}",
+            "item": "https://heartsymbols.netlify.app/{{keyword-slug}}/"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://heartsymbols.netlify.app/{{keyword-slug}}/#webpage",
+        "url": "https://heartsymbols.netlify.app/{{keyword-slug}}/",
+        "name": "{{Spoke Keyword}} ♡ — Copy and Paste | Heart Symbols",
+        "description": "{{Spoke 1-2 sentence meta description answering query and inviting one-tap copy.}}",
+        "isPartOf": { "@id": "https://heartsymbols.netlify.app/#website" },
+        "datePublished": "2026-10-14",
+        "dateModified": "2026-10-14",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://heartsymbols.netlify.app/{{keyword-slug}}/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "{{Spoke specific FAQ Question 1}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{Spoke specific FAQ Answer 1}}"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "{{Spoke specific FAQ Question 2}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{Spoke specific FAQ Answer 2}}"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "{{Spoke specific FAQ Question 3}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{Spoke specific FAQ Answer 3}}"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header-wrap">
+    <div class="site-header">
+      <a href="/" class="brand">
+        <span class="brand-badge" aria-hidden="true">♥</span>
+        <span>Heart Symbols</span>
+      </a>
+      <div class="header-right">
+        <nav class="site-nav" aria-label="Main Navigation">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle color theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Breadcrumb: Home › Spoke title -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">{{Spoke title}}</li>
+      </ol>
+    </nav>
+
+    <article class="hero" id="spoke-hero">
+      <!-- 1. H1 with spoke's own keyword (never "heart symbols" alone) -->
+      <h1>{{Spoke Keyword}} <span class="hero-heart">♡</span> Copy and Paste</h1>
+
+      <!-- 2. First paragraph: answer query directly and link to hub once, naturally -->
+      <p>{{Direct answer explaining the spoke keyword, how to use it, and providing context. Explore our complete collection of <a href="/">heart symbols</a> for full text sets, colored emoji, and keyboard typing guides.}}</p>
+
+      <noscript>
+        <p class="noscript-notice">Select a symbol and copy it manually.</p>
+      </noscript>
+
+      <!-- 3. Small copy grid of relevant symbols only -->
+      <div class="symbol-group">
+        <h2>{{Target symbol group name}}</h2>
+        <p class="group-desc">Tap any character to copy it instantly to your clipboard.</p>
+        <div class="grid">
+          <button class="sym" type="button" data-s="{{Symbol 1}}" aria-label="Copy {{Symbol 1}} {{Name 1}}">
+            <span class="g" aria-hidden="true">{{Symbol 1}}</span>
+            <span class="n">{{Name 1}}</span>
+          </button>
+          <button class="sym" type="button" data-s="{{Symbol 2}}" aria-label="Copy {{Symbol 2}} {{Name 2}}">
+            <span class="g" aria-hidden="true">{{Symbol 2}}</span>
+            <span class="n">{{Name 2}}</span>
+          </button>
+          <button class="sym" type="button" data-s="{{Symbol 3}}" aria-label="Copy {{Symbol 3}} {{Name 3}}">
+            <span class="g" aria-hidden="true">{{Symbol 3}}</span>
+            <span class="n">{{Name 3}}</span>
+          </button>
+          <button class="sym" type="button" data-s="{{Symbol 4}}" aria-label="Copy {{Symbol 4}} {{Name 4}}">
+            <span class="g" aria-hidden="true">{{Symbol 4}}</span>
+            <span class="n">{{Name 4}}</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. 600–900 words of unique, useful content across 3–5 H2s (including one question-style H2) -->
+    <section class="content-section" id="overview">
+      <h2>Understanding {{Spoke Keyword}} and Unicode Representation</h2>
+      <p>{{Detailed technical and practical explanation of the symbols, their character history, encoding details, and behavioral properties across applications.}}</p>
+      <p>{{Practical usage contexts such as bios, headings, captions, gaming tags, and document design.}}</p>
+    </section>
+
+    <section class="content-section" id="how-to-use">
+      <h2>How do you type and use {{Spoke Keyword}} on different devices?</h2>
+      <p>{{Question-style H2 answering step-by-step how to type, input, or paste the symbol across Windows, macOS, iOS, and Android systems.}}</p>
+      <ul>
+        <li><strong>Windows:</strong> {{Windows keyboard shortcut or emoji panel instructions.}}</li>
+        <li><strong>macOS:</strong> {{Mac shortcut instructions.}}</li>
+        <li><strong>iOS &amp; Android:</strong> {{Mobile typing or copy-paste instructions.}}</li>
+      </ul>
+    </section>
+
+    <section class="content-section" id="styling-codes">
+      <h2>Unicode codes, HTML entities, and CSS styling</h2>
+      <p>{{Details regarding character code points, CSS styling tips, and cross-platform font rendering characteristics.}}</p>
+    </section>
+
+    <!-- 5. FAQ with 3–5 spoke-specific questions (FAQPage JSON-LD) -->
+    <section class="content-section" id="faq">
+      <h2>Frequently asked questions about {{Spoke Keyword}}</h2>
+      <div class="faq-list">
+        <details open>
+          <summary>{{Spoke specific FAQ Question 1}}</summary>
+          <p>{{Spoke specific FAQ Answer 1}}</p>
+        </details>
+        <details>
+          <summary>{{Spoke specific FAQ Question 2}}</summary>
+          <p>{{Spoke specific FAQ Answer 2}}</p>
+        </details>
+        <details>
+          <summary>{{Spoke specific FAQ Question 3}}</summary>
+          <p>{{Spoke specific FAQ Answer 3}}</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 6. Related guides block: 2–3 sibling links (same cluster) + 1 link from another cluster -->
+    <section class="content-section" id="related-guides">
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/{{sibling-spoke-1}}/">{{Sibling Anchor 1}}</a> — {{One-line description}}</li>
+        <li><a href="/{{sibling-spoke-2}}/">{{Sibling Anchor 2}}</a> — {{One-line description}}</li>
+        <li><a href="/{{cross-cluster-spoke}}/">{{Cross-cluster Anchor}}</a> — {{One-line description}}</li>
+      </ul>
+    </section>
+
+    <!-- 7. Back to all heart symbols link to / at the bottom -->
+    <div style="margin: 3rem 0 2rem;">
+      <a href="/" class="btn btn-secondary" style="text-decoration:none;">← Back to all heart symbols</a>
+    </div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Modern Floating Mix Dock Bar -->
+  <div id="mix-bar" class="mix-bar" role="region" aria-label="Your heart mix bar">
+    <div class="mix-inner">
+      <div class="mix-textarea-wrap">
+        <textarea id="mix-input" class="mix-textarea" aria-label="Your heart mix" rows="1"></textarea>
+        <p class="mix-helper">Every tap also adds the symbol here so you can copy several at once.</p>
+      </div>
+      <div class="mix-actions">
+        <button type="button" id="mix-copy-all" class="btn btn-primary">Copy all</button>
+        <button type="button" id="mix-clear" class="btn btn-secondary">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/tools/">Tools</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Heart Symbols. Symbols are standard Unicode characters. Appearance varies by device and font.</p>
+  </footer>
+
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
