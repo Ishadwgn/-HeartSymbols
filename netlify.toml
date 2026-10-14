@@ -1,11 +1,6 @@
 [build]
-  command = ""
-  publish = "."
-
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
+  publish = "dist"
+  command = "npm run build"
 
 [[headers]]
   for = "/*"
